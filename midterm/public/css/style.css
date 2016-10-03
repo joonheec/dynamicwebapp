@@ -1,0 +1,11 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background-color: green;
+	height: 100%;
+}
+html {
+	height: 100%;
+}
