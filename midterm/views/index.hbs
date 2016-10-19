@@ -1,0 +1,56 @@
+<header></header>
+<main>
+	<div id="post-container"></div>
+</main>
+<footer></footer>
+
+<script>
+	$(document).ready(function() {
+		var posts = {{{ posts }}};
+		for (var i = posts.length - 1; i >= 0; i--) {
+			var post = $('<div></div>').addClass('post');
+
+			var post_title = $('<p></p>').addClass('post-title');
+			post_title.append(posts[i].post_title);
+
+			var brand = $('<p></p>').addClass('brand');
+			brand.append(posts[i].brand);
+
+			var name = $('<p></p>').addClass('name');
+			name.append(posts[i].name);
+
+			// var description = $('<p></p>').addClass('description');
+			// description.append(posts[i].description);
+
+			var date_container = $('<p></p>').addClass('date');
+			var date = new Date(posts[i].dateCreated);
+
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			var year = date.getFullYear();
+			var hour = date.getHours();
+			var ampm = hour >= 12 ? 'pm':'am';
+			if (hour == 0) {
+				hour = 12;
+			}
+			if (hour > 12) {
+				hour = hour % 12;
+			}
+			var minutes = date.getMinutes();
+			if (minutes < 10) {
+				minutes = '0' + minutes;
+			}
+
+			date = month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
+			date_container.append(date);
+
+			post.append(post_title);
+			post.append(brand);
+			post.append(name);
+			// post.append(description);
+			post.append(date_container);
+
+			$('#post-container').append(post);
+		}
+	});
+</script>
