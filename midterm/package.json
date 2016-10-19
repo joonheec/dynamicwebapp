@@ -1,0 +1,26 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-css": "node-sass src/scss/main.scss public/css/style.css -w",
+    "watch": "npm run watch-css | nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.5",
+    "hbs": "^4.0.1",
+    "lodash": "^4.16.4",
+    "mkdirp": "^0.5.1",
+    "mongoose": "^4.6.3",
+    "multer": "^1.2.0",
+    "node-sass": "^3.10.1"
+  }
+}
