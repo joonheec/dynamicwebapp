@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+var multer = require('multer');
 
-var uploadPath =  path.join(__dirname, '../public/uploads');
+var uploadPath = path.join(__dirname, '../public/uploads');
+var upload = multer({dest: uploadPath});
+
 var Drop = require('../models/drop');
-// var multer = require('multer');
+
 router.get('/', function(req, res) {
 	// TODO get last 20 documents
 	var q = Drop.find().sort('date').limit(10);
@@ -21,8 +24,16 @@ router.get('/', function(req, res) {
 router.get('/enter', function(req, res) {
 	res.render('enter');
 });
-
-router.post('/enter', function(req, res, next) {
+router.get('/:id', function(req, res) {
+	
+	Drop.findOne({'_id': req.params.id}, function(err, data) {
+		if (err) {
+			console.log(err);
+		}
+		return res.render('post', data);
+	});
+});
+router.post('/enter', upload.single('image'), function(req, res, next) {
 	console.log("here");
 	var drop = new Drop({
 		post_title: req.body.postTitle,
@@ -31,7 +42,7 @@ router.post('/enter', function(req, res, next) {
 		name: req.body.name,
 		description: req.body.description,
 		dateCreated: new Date(),
-		// imageFileName: 'uploads/' + req.file.filename
+		imageFileName: 'uploads/' + req.file.filename
 	});
 
 	drop.save(function(err, data) {

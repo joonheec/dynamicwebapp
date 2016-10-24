@@ -1,19 +1,34 @@
 <header></header>
 <main>
 	<div id="post-container"></div>
+	{{!-- {{#each posts}}
+		<div class="post">
+			<p class = "post-title">{{post_title}}<p>
+			<p class = "brand">{{brand}}</p>
+			<p class = "name">{{name}}</p>
+			<div class="image-container">
+				<a href="./{{_id}}">
+	  				<div class="gallery"><img src="/uploads/{{_id}}"></div>
+				</a>
+			</div>		
+		</div>
+	{{/each}} --}}
 </main>
 <footer></footer>
 
 <script>
 	$(document).ready(function() {
+
 		var posts = {{{ posts }}};
+		var a = document.createElement('a');
 		for (var i = posts.length - 1; i >= 0; i--) {
+			var image = $('<div><img src = {{this.imageFileName}}>').addClass('image');
 			var post = $('<div></div>').addClass('post');
 
 			var post_title = $('<p></p>').addClass('post-title');
 			post_title.append(posts[i].post_title);
 
-			var brand = $('<p></p>').addClass('brand');
+			var brand = $('<p>brand:</p>').addClass('brand');
 			brand.append(posts[i].brand);
 
 			var name = $('<p></p>').addClass('name');
@@ -22,7 +37,7 @@
 			// var description = $('<p></p>').addClass('description');
 			// description.append(posts[i].description);
 
-			var date_container = $('<p></p>').addClass('date');
+			var date_container = $('<p>posted: </p>').addClass('date');
 			var date = new Date(posts[i].dateCreated);
 
 			var month = date.getMonth() + 1;
@@ -43,7 +58,8 @@
 
 			date = month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
 			date_container.append(date);
-
+			a.setAttribute('href',"./{{id}}");
+			post.append(a);
 			post.append(post_title);
 			post.append(brand);
 			post.append(name);

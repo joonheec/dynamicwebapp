@@ -4,12 +4,12 @@ var Schema = mongoose.Schema;
 var dropSchema = new Schema({
   	post_title: {type: String, required: true},
   	slug: {type: String, required: true, unique: true},
-  	brand: String,
-  	name: String,
-  	description: String,
+  	brand: {type: String, required: true},
+  	name: {type: String, required: true},
+  	description: {type: String, required: false},
   	tags: [String],
   	dateCreated: {type: Date, default: Date.now},
-  	imageFileName: String
+  	imageFileName: {type: String, required: false}
 });
 
 var Drop = mongoose.model('Drop', dropSchema);

@@ -1,9 +1,15 @@
 <div id="data-entry-container">
-	<form action="/enter" method="post" >
+	<form action="/enter" method="post" enctype="multipart/form-data">
+		<label for="brand">Title</label>
 		<input type="text" name="postTitle">
+		<label for="brand">Brand Name</label>
 		<input type="text" name="brand">
+		<label for="name">Name of Product</label>
 		<input type="text" name="name">
+		<label for="description">Drop Description</label>
 		<input type="text" name="description">
+		<label for="image">Upload an Image</label>
+		<input id="image" type="file" name="image" accepts="image/*" single>
 	   	<br>
 	   	<button type="submit">Submit</button>
 	</form>
