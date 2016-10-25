@@ -9,6 +9,7 @@ var upload = multer({dest: uploadPath});
 var Drop = require('../models/drop');
 
 router.get('/', function(req, res) {
+	console.log('here');
 	// TODO get last 20 documents
 	var q = Drop.find().sort('date').limit(10);
 	q.exec(function(err, posts) {
