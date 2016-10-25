@@ -30,7 +30,9 @@ router.get('/:id', function(req, res) {
 		if (err) {
 			console.log(err);
 		}
-		return res.render('post', data);
+		res.render('post', {
+			data: JSON.stringify(data)
+		});
 	});
 });
 router.post('/enter', upload.single('image'), function(req, res, next) {

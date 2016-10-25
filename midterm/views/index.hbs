@@ -1,3 +1,4 @@
+<link rel='stylesheet' href='css/index.css'>
 <header></header>
 <main>
 	<div id="post-container"></div>
@@ -18,12 +19,21 @@
 
 <script>
 	$(document).ready(function() {
-
 		var posts = {{{ posts }}};
-		var a = document.createElement('a');
 		for (var i = posts.length - 1; i >= 0; i--) {
-			var image = $('<div><img src = {{this.imageFileName}}>').addClass('image');
+			// container
+			var post_link = $('<a></a>').addClass('image-link');
+			post_link.attr('href', posts[i]['_id']);
+
 			var post = $('<div></div>').addClass('post');
+
+			var left_half = $('<div></div>').addClass('left-half');
+			var right_half = $('<div></div>').addClass('right-half');
+
+
+			// content
+			var image = $('<div></div>').addClass('image');
+			image.css({'background-image': 'url(' + posts[i].imageFileName + ')'});
 
 			var post_title = $('<p></p>').addClass('post-title');
 			post_title.append(posts[i].post_title);
@@ -34,12 +44,25 @@
 			var name = $('<p></p>').addClass('name');
 			name.append(posts[i].name);
 
-			// var description = $('<p></p>').addClass('description');
-			// description.append(posts[i].description);
-
 			var date_container = $('<p>posted: </p>').addClass('date');
-			var date = new Date(posts[i].dateCreated);
+			var date = formatDate(new Date(posts[i].dateCreated));
 
+
+			// appending
+			date_container.append(date);
+			left_half.append(image);
+			right_half.append(post_title);
+			right_half.append(brand);
+			right_half.append(name);
+			right_half.append(date_container);
+			post.append(left_half);
+			post.append(right_half);
+			post_link.append(post);
+
+			$('#post-container').append(post_link);
+		}
+
+		function formatDate(date) {
 			var month = date.getMonth() + 1;
 			var day = date.getDate();
 			var year = date.getFullYear();
@@ -55,18 +78,7 @@
 			if (minutes < 10) {
 				minutes = '0' + minutes;
 			}
-
-			date = month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
-			date_container.append(date);
-			a.setAttribute('href',"./{{id}}");
-			post.append(a);
-			post.append(post_title);
-			post.append(brand);
-			post.append(name);
-			// post.append(description);
-			post.append(date_container);
-
-			$('#post-container').append(post);
+			return month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
 		}
 	});
 </script>

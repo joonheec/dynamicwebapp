@@ -1,0 +1,15 @@
+main {
+	padding: 0px;
+}
+.image {
+	display: block;
+	margin: auto;
+	width: 80%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.content-container {
+	width: 80%;
+	margin: 20px auto;
+}

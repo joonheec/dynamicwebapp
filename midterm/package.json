@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "depd": "^1.1.0",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
@@ -19,8 +20,10 @@
     "hbs": "^4.0.1",
     "lodash": "^4.16.4",
     "mkdirp": "^0.5.1",
+    "mongodb-core": "^2.0.13",
     "mongoose": "^4.6.3",
     "multer": "^1.2.0",
-    "node-sass": "^3.10.1"
+    "node-sass": "^3.10.1",
+    "qs": "^6.3.0"
   }
 }

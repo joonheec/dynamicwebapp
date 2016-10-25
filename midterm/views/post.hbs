@@ -1,7 +1,72 @@
+<link rel='stylesheet' href='css/post.css'>
 <header></header>
 <main>
 	<div id="full-post"></div>
-	
 </main>
 <footer></footer>
 
+<script>
+	$(document).ready(function() {
+		var header_height = $('header').height();
+		var window_height = $(window).height();
+		var content_height = window_height - header_height;
+		
+		var data = {{{ data }}};
+
+		// content
+		var image = $('<div></div>').addClass('image');
+		if (data.imageFileName) {
+			image.css({'background-image': 'url(' + data.imageFileName + ')', 'height':content_height});
+		} else {
+			image.css({'background-image': 'url(http://placehold.it/350x150)', 'height':content_height});
+		}
+
+		var content_container = $('<div></div>').addClass('content-container');
+
+		var post_title = $('<p></p>').addClass('post-title');
+		post_title.append(data.post_title);
+
+		var brand = $('<p>brand:</p>').addClass('brand');
+		brand.append(data.brand);
+
+		var name = $('<p></p>').addClass('name');
+		name.append(data.name);
+
+		var description = $('<p></p>').addClass('description');
+		description.append(data.description);
+
+		var date_container = $('<p>posted: </p>').addClass('date');
+		var date = formatDate(new Date(data.dateCreated));
+		date_container.append(date);
+
+
+		// appending
+		content_container.append(post_title);
+		content_container.append(brand);
+		content_container.append(name);
+		content_container.append(description);
+		content_container.append(date_container);
+
+		$('#full-post').append(image);
+		$('#full-post').append(content_container);
+
+		function formatDate(date) {
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			var year = date.getFullYear();
+			var hour = date.getHours();
+			var ampm = hour >= 12 ? 'pm':'am';
+			if (hour == 0) {
+				hour = 12;
+			}
+			if (hour > 12) {
+				hour = hour % 12;
+			}
+			var minutes = date.getMinutes();
+			if (minutes < 10) {
+				minutes = '0' + minutes;
+			}
+			return month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
+		}
+	});
+</script>
