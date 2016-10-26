@@ -41,14 +41,14 @@
 	background-position: center;
 }
 .brand {
-  	font-weight: bold;
   	font-size: 18px;
 }
 .name {
-  	font-size: 15px;
+  	font-size: 18px;
 }
 .date {
   	margin-top: 20px;
+  	font-size: 13px;
 }
 .image-link {
 	display: block;

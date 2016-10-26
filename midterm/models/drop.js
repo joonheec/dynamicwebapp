@@ -9,7 +9,7 @@ var dropSchema = new Schema({
   	description: {type: String, required: false},
   	tags: [String],
   	dateCreated: {type: Date, default: Date.now},
-  	imageFileName: {type: String, required: false}
+  	imageFileName: {type: String, required: true}
 });
 
 var Drop = mongoose.model('Drop', dropSchema);

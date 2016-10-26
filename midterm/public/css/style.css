@@ -1,9 +1,14 @@
 * {
 	margin: 0px;
 	padding: 0px;
+	font-family: nexaLight;
 }
 body {
 	background-color: rgb(91,124,51);
+}
+@font-face {
+    font-family: nexaLight;
+    src: url("../fonts/Nexa_Free_Light.otf");
 }
 header {
 	position: fixed;
@@ -24,4 +29,27 @@ footer {
 	height: 100px;
 	width: 100%;
 	background-color: white;
+}
+#logo{
+	display: inline-block;
+	height: 100px;
+	width: auto;
+	margin-left: 15px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+
+}
+a, a:visited, a:hover, a:active{
+	color: rgb(91,124,51);
+}
+#enter-container{
+	display: inline-block;
+}
+#enter-container:link{
+	text-decoration: none;
+	padding-left: 40px;
+
+}
+.header-tab{
+	font-size: 20px;
 }

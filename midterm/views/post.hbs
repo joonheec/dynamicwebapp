@@ -1,5 +1,8 @@
 <link rel='stylesheet' href='css/post.css'>
-<header></header>
+<header>
+	<a id = "logo-container" href = "../"><img id = "logo" src="img/hypeaware1.svg"></a>
+	<a id = "enter-container" href = "/enter"><p class = "header-tab" id = "enter">Upload</p></a>
+</header>
 <main>
 	<div id="full-post"></div>
 </main>
@@ -26,7 +29,7 @@
 		var post_title = $('<p></p>').addClass('post-title');
 		post_title.append(data.post_title);
 
-		var brand = $('<p>brand:</p>').addClass('brand');
+		var brand = $('<p>Brand: </p>').addClass('brand');
 		brand.append(data.brand);
 
 		var name = $('<p></p>').addClass('name');
@@ -44,8 +47,8 @@
 		content_container.append(post_title);
 		content_container.append(brand);
 		content_container.append(name);
-		content_container.append(description);
 		content_container.append(date_container);
+		content_container.append(description);
 
 		$('#full-post').append(image);
 		$('#full-post').append(content_container);

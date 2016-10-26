@@ -1,19 +1,9 @@
 <link rel='stylesheet' href='css/index.css'>
-<header></header>
+<header><a id = "logo-container" href = "../"><img id = "logo" src="img/hypeaware1.svg"></a>
+	<a id = "enter-container" href = "/enter"><p class = "header-tab" id = "enter">Upload</p></a></header>
 <main>
 	<div id="post-container"></div>
-	{{!-- {{#each posts}}
-		<div class="post">
-			<p class = "post-title">{{post_title}}<p>
-			<p class = "brand">{{brand}}</p>
-			<p class = "name">{{name}}</p>
-			<div class="image-container">
-				<a href="./{{_id}}">
-	  				<div class="gallery"><img src="/uploads/{{_id}}"></div>
-				</a>
-			</div>		
-		</div>
-	{{/each}} --}}
+	
 </main>
 <footer></footer>
 
@@ -38,7 +28,7 @@
 			var post_title = $('<p></p>').addClass('post-title');
 			post_title.append(posts[i].post_title);
 
-			var brand = $('<p>brand:</p>').addClass('brand');
+			var brand = $('<p>Brand: </p>').addClass('brand');
 			brand.append(posts[i].brand);
 
 			var name = $('<p></p>').addClass('name');

@@ -1,16 +1,27 @@
+<link rel='stylesheet' href='css/enter.css'>
+<header>
+	<a id = "logo-container" href = "../"><img id = "logo" src="img/hypeaware1.svg"></a>
+	<a id = "enter-container" href = "/enter"><p class = "header-tab" id = "enter">Upload</p></a></header>
+<footer></footer>
+<main>
 <div id="data-entry-container">
 	<form action="/enter" method="post" enctype="multipart/form-data">
-		<label for="brand">Title</label>
+		<label for="brand">Title of Post</label>
 		<input type="text" name="postTitle">
+		<br>
 		<label for="brand">Brand Name</label>
 		<input type="text" name="brand">
+		<br>
 		<label for="name">Name of Product</label>
 		<input type="text" name="name">
+		<br>
 		<label for="description">Drop Description</label>
 		<input type="text" name="description">
+		<br>
 		<label for="image">Upload an Image</label>
 		<input id="image" type="file" name="image" accepts="image/*" single>
 	   	<br>
 	   	<button type="submit">Submit</button>
 	</form>
+</main>
 </div>
