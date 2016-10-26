@@ -23,7 +23,7 @@ hbs.registerPartial('partials', fs.readFileSync(__dirname + '/views/partials/par
 hbs.registerPartial('search', fs.readFileSync(__dirname + '/views/partials/search.hbs', 'utf8'));
 hbs.registerPartial('footer', fs.readFileSync(__dirname + '/views/partials/footer.hbs', 'utf8'));
 
-var portNum = process.env.PORT || 8080;
+var portNum = process.env.PORT || 8000;
 app.set('port', portNum);
 app.use(express.static('public'));
 
