@@ -18,7 +18,10 @@ var app = express();
 var PORT = process.env.PORT || 8081;
 
 // Cookie Secret in .env
+<<<<<<< Updated upstream
 //app.use(cookieParser(process.env.cookieSecret));
+=======
+>>>>>>> Stashed changes
 app.use(cookieParser());
 
 // creating Session
@@ -51,8 +54,11 @@ app.engine('handlebars', hbs({
 app.set('view engine', 'handlebars');
 
 // setup cookierParser and bodyParser before our routes
+<<<<<<< Updated upstream
 // that depend on them
 // add form fields to req.body, ie.e. req.body.username
+=======
+>>>>>>> Stashed changes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
@@ -62,14 +68,21 @@ app.use(bodyParser.urlencoded({
 mongoose.connect(process.env.DB_URL);
 
 
+<<<<<<< Updated upstream
 // LOCAL AUTHORIZATION SETUP, SEE /lib/auth.js FOR FUNCTIONS
+=======
+>>>>>>> Stashed changes
 var options = {};
 var auth = require('./lib/auth')(app, options);
 auth.init(); // setupmiddleware
 auth.registerRoutes();
 
+<<<<<<< Updated upstream
 // FACEBOOK AUTHORIZATION SETUP
 // Facbook Login Stratgey using passport-facebook
+=======
+// Facebook authorization 
+>>>>>>> Stashed changes
 passport.use(new FacebookStrategy({
         clientID: process.env.FACEBOOK_APP_ID,
         clientPassword: process.env.FACEBOOK_APP_SECRET,
@@ -83,40 +96,65 @@ passport.use(new FacebookStrategy({
         });
     }
 ));
+<<<<<<< Updated upstream
 // OAuth for Facebook.
 // Routes to and from Auth provider
 // redirect TO - FACEBOOK
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 // callback FROM - FACEBOOK
+=======
+// Facebook OAuth
+
+// redirecting to facebook
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+// facebook callback 
+>>>>>>> Stashed changes
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
         failureRedirect: '/login'
     }),
     function (req, res) {
         res.redirect('/');
     });
+<<<<<<< Updated upstream
 // END OF FACEBOOK AUTHORIZATION
 
 
 
 // BEGIN HOME PAGE, COOKIES
+=======
+
+
+
+
+// home page 
+>>>>>>> Stashed changes
 app.get('/', function (req, res) {
     if (req.session.treat) {
         return res.render('view', {
             msg: 'You have a treat: ' + req.session.treat
         });
     }
+<<<<<<< Updated upstream
     //        if (req.signedCookies.treat) {
     //            return res.render('view', {
     //                msg: 'You have a treat: ' + req.signedCookies.treat
     //            });
     //        }
+=======
+
+>>>>>>> Stashed changes
     return res.render('view', {
         msg: 'No treats.'
     });
 });
 
+<<<<<<< Updated upstream
 // cookie creation
+=======
+// create cookies
+>>>>>>> Stashed changes
 app.get('/treat', function (req, res) {
     req.session.treat = 'candy corn'
     req.session.flash = {
@@ -124,6 +162,7 @@ app.get('/treat', function (req, res) {
         header: 'You got a treat',
         body: 'the treat is ' + req.session.treat
     };
+<<<<<<< Updated upstream
     //    res.cookie('treat', 'candy corn',{
     //        httpOnly: true,
     ////        signed: true
@@ -132,6 +171,13 @@ app.get('/treat', function (req, res) {
 });
 
 // cookie deletion
+=======
+
+    res.redirect('/');
+});
+
+// delete cookies
+>>>>>>> Stashed changes
 app.get('/clear', function (req, res) {
     delete req.session.treat;
     //res.clearCookie('treat');
@@ -146,7 +192,11 @@ app.get('/clear', function (req, res) {
 
 
 
+<<<<<<< Updated upstream
 // start server
+=======
+//port 
+>>>>>>> Stashed changes
 app.listen(PORT, function () {
     console.log('listening on port ', PORT);
 });

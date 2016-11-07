@@ -11,7 +11,7 @@ var Drop = require('../models/drop');
 router.get('/', function(req, res) {
 	console.log('here');
 	// TODO get last 20 documents
-	var q = Drop.find().sort('date').limit(10);
+	var q = Drop.find().sort('date').limit(20);
 	q.exec(function(err, posts) {
 		if (err) {
 			console.log(err);
