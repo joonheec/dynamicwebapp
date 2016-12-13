@@ -26,6 +26,7 @@
 .drop-title {
 	font-size: 25px;
 }
+
 .image {
 	display: block;
 	width: 100%;
@@ -64,8 +65,9 @@
 #drop-container {
 	width: 50%;
 }
-#comment-wrapper {
+#content-wrapper {
 	width: 50%;
+	margin-top: 120px;
 }
 .comment-top {
 	width: 100%;
