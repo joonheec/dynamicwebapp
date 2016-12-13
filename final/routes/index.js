@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
 				res.render('index', {
 					posts: [],
 					user_link: req.user._id,
-					user_name : req.user.username
+					user : req.user.username
 				});
 			} else {
 				res.render('index', {

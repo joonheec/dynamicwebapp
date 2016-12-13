@@ -1,17 +1,31 @@
+<link rel="stylesheet" href="css/style.css">
+<link rel='stylesheet' href='css/index.css'>
 <h1>{{viewName}}</h1>
+<header>
+	<a id="logo-container" href="../">
+		<img id="logo" src="img/hypeaware1.svg">
+	</a>
+	<a id="enter-container" href="/enter">
+		<p class="header-tab" id="enter">Upload</p>
+	</a>
+	<a id = "login-container" href = "/login"><p class = "header-tab" id = "enter">Log in</p></a>
+</header>
 <body>
-	<h1 class = 'title'>Sign Up</h1>
-	<form class="ui form" method="post" action="">
- 		<div class="field">
- 		    <label>Username</label>
- 		    <input type="text" name="username" placeholder="username">
- 		</div>
- 		<div class="field">
- 		    <label>Password</label>
- 		    <input type="password" name="password" placeholder="password">
- 		</div>
- 		<button class="ui button" type="submit">Submit</button>
-	</form>
+	<div id= 'form-container'>
+		<h1 class = 'title'>Sign Up</h1>
+		<form class="ui form" method="post" action="">
+ 			<div class="field">
+ 			    <label>Username</label>
+ 			    <input type="text" name="username" placeholder="username">
+ 			</div>
+ 			<div class="field">
+ 			    <label>Password</label>
+ 			    <input type="password" name="password" placeholder="password">
+ 			</div>
+ 			<button class="ui button" type="submit">Submit</button>
+		</form>
+	</div>
+
 </body>
 <style>
 	.title{

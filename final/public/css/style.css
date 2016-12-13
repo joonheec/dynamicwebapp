@@ -50,6 +50,33 @@ a, a:visited, a:hover, a:active{
 	padding-left: 40px;
 
 }
+#login-container{
+	display: inline-block;
+}
+#login-container:link{
+	text-decoration: none;
+	padding-left: 40px;
+
+}
+#logout-container{
+	display: inline-block;
+}
+#logout-container:link{
+	text-decoration: none;
+	padding-left: 40px;
+
+}
+#form-container{
+	margin-top: 120px;
+}
+#signup-container{
+	display: inline-block;
+}
+#signup-container:link{
+	text-decoration: none;
+	padding-left: 40px;
+
+}
 .header-tab{
 	font-size: 20px;
 }

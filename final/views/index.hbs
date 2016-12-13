@@ -7,9 +7,18 @@
 	<a id="enter-container" href="/enter">
 		<p class="header-tab" id="enter">Upload</p>
 	</a>
+	{{#if user}}
+		<a id = "logout-container" href = "../logout"><p class = "header-tab" id = "enter">Log Out</p></a>
+	{{/if}}
+	{{#unless user}}
+		<a id = "signup-container" href = "/signup"><p class = "header-tab" id = "enter">Sign Up</p></a>
+		<a id = "login-container" href = "/login"><p class = "header-tab" id = "enter">Log in</p></a>
+	{{/unless}}
 </header>
 <main>
-	<div id="user-profile"><a href='user/{{ user_link }}'>User Profile{{{user_name}}}</a></div>
+	{{#if user}}
+		<div id="user-profile"><a href='user/{{ user_link }}'>{{user.username}}</a></div>
+	{{/if}}
 	<div id="post-container"></div>	
 </main>
 <footer></footer>
