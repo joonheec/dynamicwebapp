@@ -1,0 +1,68 @@
+body {
+	background-color: white;
+}
+main {
+	padding: 0px;
+}
+.image {
+	display: block;
+	margin: auto;
+	width: 80%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.content-container {
+	width: 80%;
+	margin: 20px auto;
+}
+.post-title{
+	font-size: 20px;
+}
+.brand{
+	font-size: 16px;
+}
+.name{
+	font-size: 16px;
+}
+.date{
+	font-size: 10px;
+}
+.description{
+	padding-top: 30px;
+}
+
+
+.comment-container {
+	width: 80%;
+	margin: auto;
+	border: 1px solid black;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+}
+.comment-top {
+	width: 100%;
+}
+.comment-bottom {
+	width: 100%;
+}
+.text-container {
+	width: 100%;
+}
+.text-container {
+	font-size: 24px;
+}
+.user-container {
+	display: inline-block;
+	margin-right: 15px;
+}
+.user-container p {
+	font-size: 18px;
+}
+.date-container {
+	display: inline-block;
+}
+.date-container p {
+	font-size: 12px;
+}

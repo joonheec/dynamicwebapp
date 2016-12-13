@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="css/style.css">
+<link rel='stylesheet' href='css/index.css'>
+<header>
+	<a id="logo-container" href="../">
+		<img id="logo" src="img/hypeaware1.svg">
+	</a>
+	<a id="enter-container" href="/enter">
+		<p class="header-tab" id="enter">Upload</p>
+	</a>
+</header>
+<main>
+	<div id="user-profile"><a href='user/{{ user_link }}'>DICKS DICKS DICKS</a></div>
+	<div id="post-container"></div>	
+</main>
+<footer></footer>
+
+<script>
+	$(document).ready(function() {
+		var posts = {{{ posts }}};
+		for (var i = posts.length - 1; i >= 0; i--) {
+			// container
+			var post_link = $('<a></a>').addClass('image-link');
+			post_link.attr('href', posts[i]['_id']);
+
+			var post = $('<div></div>').addClass('post');
+
+			var left_half = $('<div></div>').addClass('left-half');
+			var right_half = $('<div></div>').addClass('right-half');
+
+
+			// content
+			var image = $('<div></div>').addClass('image');
+			image.css({'background-image': 'url(' + posts[i].imageFileName + ')'});
+
+			var post_title = $('<p></p>').addClass('post-title');
+			post_title.append(posts[i].post_title);
+
+			var brand = $('<p>Brand: </p>').addClass('brand');
+			brand.append(posts[i].brand);
+
+			var name = $('<p></p>').addClass('name');
+			name.append(posts[i].name);
+
+			var date_container = $('<p>posted: </p>').addClass('date');
+			var date = formatDate(new Date(posts[i].dateCreated));
+
+
+			// appending
+			date_container.append(date);
+			left_half.append(image);
+			right_half.append(post_title);
+			right_half.append(brand);
+			right_half.append(name);
+			right_half.append(date_container);
+			post.append(left_half);
+			post.append(right_half);
+			post_link.append(post);
+
+			$('#post-container').append(post_link);
+		}
+
+		function formatDate(date) {
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			var year = date.getFullYear();
+			var hour = date.getHours();
+			var ampm = hour >= 12 ? 'pm':'am';
+			if (hour == 0) {
+				hour = 12;
+			}
+			if (hour > 12) {
+				hour = hour % 12;
+			}
+			var minutes = date.getMinutes();
+			if (minutes < 10) {
+				minutes = '0' + minutes;
+			}
+			return month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
+		}
+	});
+</script>

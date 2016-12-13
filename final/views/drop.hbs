@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="css/style.css">
+<link rel='stylesheet' href='css/drop.css'>
+<header>
+	<a id="logo-container" href="../">
+		<img id="logo" src="img/hypeaware1.svg">
+	</a>
+	<a id="enter-container" href="/enter">
+		<p class="header-tab" id="enter">Upload</p>
+	</a>
+</header>
+<main>
+	<div id="full-post"></div>
+	<div id="enter-comment">
+			{{#if enter_comment}}
+				<form method="post">
+				    <div>
+				        <label>Comment:</label>
+				        <input type="text" name="comment"/>
+				    </div>
+				    <div>
+				        <input type="submit" value="Enter Comment"/>
+				    </div>
+				</form>
+			{{/if}}
+			{{#unless enter_comment}}
+				<p>You must login to enter comments haha cringe!</p>
+			{{/unless}}
+	</div>
+	<div id="comment-wrapper">
+		<p>Comments: </p> <br>
+	</div>
+		
+	
+</main>
+<footer></footer>
+
+<script>
+	$(document).ready(function() {
+		var header_height = $('header').height();
+		var window_height = $(window).height();
+		var content_height = window_height - header_height;
+			
+
+		// POST
+		var data = {{{ data }}};
+
+		var image = $('<div></div>').addClass('image');
+		if (data.imageFileName) {
+			image.css({'background-image': 'url(' + data.imageFileName + ')', 'height':content_height});
+		} else {
+			image.css({'background-image': 'url(http://placehold.it/350x150)', 'height':content_height});
+		}
+
+		var content_container = $('<div></div>').addClass('content-container');
+
+		var post_title = $('<p></p>').addClass('post-title');
+		post_title.append(data.post_title);
+
+		var brand = $('<p>Brand: </p>').addClass('brand');
+		brand.append(data.brand);
+
+		var name = $('<p></p>').addClass('name');
+		name.append(data.name);
+
+		var description = $('<p></p>').addClass('description');
+		description.append(data.description);
+
+		var date_container = $('<p>posted: </p>').addClass('date');
+		var date = formatDate(new Date(data.dateCreated));
+		date_container.append(date);
+
+		content_container.append(post_title);
+		content_container.append(brand);
+		content_container.append(name);
+		content_container.append(date_container);
+		content_container.append(description);
+
+
+		// COMMENT
+		var comments = {{{ comments }}};
+
+		for (var i = comments.length-1; i >= 0; i--) {
+			var text = comments[i].text;
+			var date = formatDate(new Date(comments[i].dateCreated));
+			var user = comments[i].user;
+
+			var comment_container = $('<div></div>').addClass('comment-container');
+
+			var comment_top = $('<div></div>').addClass('comment-top');
+			var comment_bottom = $('<div></div>').addClass('comment-bottom');
+
+			var text_container = $('<div></div>').addClass('text-container');
+			text_container.append($('<p>' + text + '</p>'));
+
+			var date_container = $('<div></div>').addClass('date-container');
+			date_container.append($('<p>' + date + '</p>'));
+
+			var user_container = $('<div></div>').addClass('user-container');
+			user_container.append($('<p>' + user + '</p>'));
+
+			comment_top.append(text_container);
+			comment_bottom.append(user_container);
+			comment_bottom.append(date_container);
+			comment_container.append(comment_top);
+			comment_container.append(comment_bottom);
+
+			$('#comment-wrapper').append(comment_container);
+		};
+
+		$('#full-post').append(image);
+		$('#full-post').append(content_container);
+		// $('#full-post').append(comment_container);
+
+		function formatDate(date) {
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			var year = date.getFullYear();
+			var hour = date.getHours();
+			var ampm = hour >= 12 ? 'pm':'am';
+			if (hour == 0) {
+				hour = 12;
+			}
+			if (hour > 12) {
+				hour = hour % 12;
+			}
+			var minutes = date.getMinutes();
+			if (minutes < 10) {
+				minutes = '0' + minutes;
+			}
+			return month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
+		}
+
+
+		console.log(comments);
+	});
+</script>

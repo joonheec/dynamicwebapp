@@ -1,0 +1,16 @@
+#data-entry-container{
+	display: flex;
+	justify-content:center;
+	padding-top:50px; 
+	margin: auto;
+}
+main{
+	width: 100%;
+
+}
+input,label{
+	font-size: 20px;
+}
+button{
+	font-size: 20px;
+}

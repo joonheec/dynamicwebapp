@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="../css/style.css">
+<link rel='stylesheet' href="../css/user.css">
+<style>
+	body {
+		background-color: white;
+	}
+</style>
+
+<html>
+	<div id="content-wrapper">
+		<div id="drop-container"></div>
+		<div id="comment-wrapper"></div>
+	</div>
+</html>
+
+<script>
+	// COMMENT
+	var comments = {{{ comments }}};
+
+	for (var i = comments.length-1; i >= 0; i--) {
+		var text = comments[i].text;
+		var date = formatDate(new Date(comments[i].dateCreated));
+		var user = comments[i].user;
+
+		var comment_container = $('<div></div>').addClass('comment-container');
+
+		var comment_top = $('<div></div>').addClass('comment-top');
+		var comment_bottom = $('<div></div>').addClass('comment-bottom');
+
+		var text_container = $('<div></div>').addClass('text-container');
+		text_container.append($('<p>' + text + '</p>'));
+
+		var date_container = $('<div></div>').addClass('date-container');
+		date_container.append($('<p>' + date + '</p>'));
+
+		var user_container = $('<div></div>').addClass('user-container');
+		user_container.append($('<p>' + user + '</p>'));
+
+		comment_top.append(text_container);
+		comment_bottom.append(user_container);
+		comment_bottom.append(date_container);
+		comment_container.append(comment_top);
+		comment_container.append(comment_bottom);
+
+		$('#comment-wrapper').append(comment_container);
+	};
+
+	var drops = {{{ drops }}};
+	for (var i = drops.length - 1; i >= 0; i--) {
+		var drop_link = $('<a></a>').addClass('image-link');
+		drop_link.attr('href', '../' + drops[i]._id);
+
+		var drop = $('<div></div>').addClass('drop');
+
+		var left_half = $('<div></div>').addClass('left-half');
+		var right_half = $('<div></div>').addClass('right-half');
+
+		// content
+		var image = $('<div></div>').addClass('image');
+		image.css({'background-image': 'url(../' + drops[i].imageFileName + ')'});
+
+		var drop_title = $('<p></p>').addClass('drop-title');
+		drop_title.append(drops[i].drop_title);
+
+		var brand = $('<p>Brand: </p>').addClass('brand');
+		brand.append(drops[i].brand);
+
+		var user_name = $('<p></p>').addClass('name');
+		user_name.append(drops[i].objectName);
+
+		var date_container = $('<p>droped: </p>').addClass('date');
+		var date = formatDate(new Date(drops[i].dateCreated));
+
+
+		// appending
+		date_container.append(date);
+		left_half.append(image);
+		right_half.append(drop_title);
+		right_half.append(brand);
+		right_half.append(user_name);
+		right_half.append(date_container);
+		drop.append(left_half);
+		drop.append(right_half);
+		drop_link.append(drop);
+
+		$('#drop-container').append(drop_link);
+	};
+
+	function formatDate(date) {
+		var month = date.getMonth() + 1;
+		var day = date.getDate();
+		var year = date.getFullYear();
+		var hour = date.getHours();
+		var ampm = hour >= 12 ? 'pm':'am';
+		if (hour == 0) {
+			hour = 12;
+		}
+		if (hour > 12) {
+			hour = hour % 12;
+		}
+		var minutes = date.getMinutes();
+		if (minutes < 10) {
+			minutes = '0' + minutes;
+		}
+		return month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
+	}
+</script>
