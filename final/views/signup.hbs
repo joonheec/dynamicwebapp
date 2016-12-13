@@ -1,13 +1,34 @@
 <h1>{{viewName}}</h1>
+<body>
+	<h1 class = 'title'>Sign Up</h1>
+	<form class="ui form" method="post" action="">
+ 		<div class="field">
+ 		    <label>Username</label>
+ 		    <input type="text" name="username" placeholder="username">
+ 		</div>
+ 		<div class="field">
+ 		    <label>Password</label>
+ 		    <input type="password" name="password" placeholder="password">
+ 		</div>
+ 		<button class="ui button" type="submit">Submit</button>
+	</form>
+</body>
+<style>
+	.title{
+		text-align: center;
+	}
+	body{
+		background-color: white;
+	}
+	.ui {
+		width: 30%;
+		display: flex;
+		justify-content: center;
+		margin: auto;
 
-<form class="ui form" method="post" action="">
-    <div class="field">
-        <label>Username</label>
-        <input type="text" name="username" placeholder="username">
-    </div>
-    <div class="field">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="password">
-    </div>
-    <button class="ui button" type="submit">Submit</button>
-</form>
+	}
+	button{
+		display: block;
+	}
+
+</style>

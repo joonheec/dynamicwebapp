@@ -32,7 +32,18 @@ main {
 	padding-top: 30px;
 }
 
-
+#enter-comment{
+	font-size: 18px;
+	width: 80%;
+	margin: auto;
+}
+.comment-header{
+	font-size: 20px;
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
+}
 .comment-container {
 	width: 80%;
 	margin: auto;
