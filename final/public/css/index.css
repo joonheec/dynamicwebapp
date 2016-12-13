@@ -4,6 +4,12 @@
 	align-items: center;
 	flex-direction: column;
 }
+#user-profile{
+	display: inline-block;
+	float: right;
+	right:0;
+	margin-right: 30px;
+}
 .left-half, .right-half {
 	width: 50%;
 }

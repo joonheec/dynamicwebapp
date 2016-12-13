@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'hbs');
 app.set('view options', { layout: 'layouts/main' });
 
-var portNum = process.env.PORT || 8000;
+var portNum = process.env.PORT || 8001;
 app.set('port', portNum);
 app.use(express.static('public'));
 
