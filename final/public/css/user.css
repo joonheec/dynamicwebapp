@@ -61,11 +61,12 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
+	margin-top: 120px;
 }
 #drop-container {
 	width: 50%;
 }
-#content-wrapper {
+#comment-wrapper {
 	width: 50%;
 	margin-top: 120px;
 }
