@@ -18,7 +18,8 @@ router.get('/', function(req, res) {
 			if (req.user) {
 				res.render('index', {
 					posts: [],
-					user_link: req.user._id
+					user_link: req.user._id,
+					user_name : req.user.username
 				});
 			} else {
 				res.render('index', {
