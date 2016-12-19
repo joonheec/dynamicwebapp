@@ -4,16 +4,7 @@
 	align-items: center;
 	flex-direction: column;
 }
-#user-profile{
-	display: inline-block;
-	float: right;
-	right:0;
-	margin-right: 30px;
 
-}
-.user-profile{
-	font-size: 20px;
-}
 .left-half, .right-half {
 	width: 50%;
 }

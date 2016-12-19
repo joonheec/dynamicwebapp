@@ -54,22 +54,33 @@ module.exports = function(app) {
                     }
 
                     passport.authenticate('local')(req, res, function() {
+                        req.session.flash = {
+                        type: 'positive',
+                        header: 'Successfully Registered',
+                        body: 'You signed up as ' + user.username
+                     };
                         res.redirect('/');
                     });
                 });
             });
-            
+            passport.authenticate('local', { failureFlash: 'Invalid username or password.' });
             app.get('/login', function(req, res) {
                 res.render('login');
             });
             //if login successful, redirect. 
             app.post('/login', passport.authenticate('local', {
                 successRedirect: '/',
-                failureRedirect: '/login'
+                failureRedirect: '/login',
+                failureFlash: true
             }));
 
             app.get('/logout', function(req, res) {
                 req.logout();
+                req.session.flash = {
+                    type: 'positive',
+                    header: 'Signed out',
+                    body: 'Successfully signed out'
+                };
                 res.redirect('/');
             });
         }

@@ -63,7 +63,6 @@ a, a:visited, a:hover, a:active{
 }
 #logout-container:link{
 	text-decoration: none;
-	padding-left: 40px;
 
 }
 #form-container{
@@ -77,6 +76,21 @@ a, a:visited, a:hover, a:active{
 	padding-left: 40px;
 
 }
+#user-profile{
+	display: inline-block;
+	right:0;
+
+}
+#user-logout{
+	display: inline-block;
+	width: 40%;
+	float:right;
+	margin-left: 30px;
+}
+.user-profile{
+	font-size: 20px;
+}
 .header-tab{
+	display: inline-block;
 	font-size: 20px;
 }

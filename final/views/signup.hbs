@@ -8,7 +8,10 @@
 	<a id="enter-container" href="/enter">
 		<p class="header-tab" id="enter">Upload</p>
 	</a>
-	<a id = "login-container" href = "/login"><p class = "header-tab" id = "enter">Log in</p></a>
+	{{#unless user}}
+		<a id = "signup-container" href = "/signup"><p class = "header-tab" id = "enter">Sign Up</p></a>
+		<a id = "login-container" href = "/login"><p class = "header-tab" id = "enter">Log in</p></a>
+	{{/unless}}
 </header>
 <body>
 	<div id= 'form-container'>

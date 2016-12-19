@@ -1,0 +1,12 @@
+body{
+	background-color:white;
+}
+#login-wrapper, #password-field, #submit-field{
+	display:flex;
+	justify-content:center;
+	margin: 10px;
+}
+
+#login-wrapper{
+	margin-top: 190px;
+}

@@ -9,7 +9,7 @@
 <html>
 <header>
 	<a id = "logo-container" href = "../"><img id = "logo" src="../img/hypeaware1.svg"></a>
-	<a id = "enter-container" href = "/enter"><p class = "header-tab" id = "enter">Upload</p></a>
+	<a id = "enter-container" href = "../enter"><p class = "header-tab" id = "enter">Upload</p></a>
 	
 	<a id = "logout-container" href = "../../logout"><p class = "header-tab" id = "enter">Log Out</p></a>
 </header>
@@ -75,7 +75,7 @@
 		var user_name = $('<p></p>').addClass('name');
 		user_name.append(drops[i].objectName);
 
-		var date_container = $('<p>droped: </p>').addClass('date');
+		var date_container = $('<p>posted: </p>').addClass('date');
 		var date = formatDate(new Date(drops[i].dateCreated));
 
 

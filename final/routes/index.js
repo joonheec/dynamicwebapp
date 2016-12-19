@@ -43,7 +43,10 @@ router.get('/', function(req, res) {
 
 router.get('/enter', function(req, res) {
 	if(req.user){
-		res.render('enter');
+		res.render('enter',{
+			user_link: req.user._id,
+			user : req.user.username
+		});
 	}
 	else{
 		res.redirect('/');
@@ -102,13 +105,17 @@ router.get('/:id', function(req, res) {
 			res.render('drop', {
 				data: JSON.stringify(data),
 				enter_comment: true,
-				comments: JSON.stringify(data.comments)
+				comments: JSON.stringify(data.comments),
+				user_link: req.user._id,
+				username: req.user.username
 			});
 		} else {
 			res.render('drop', {
 				data: JSON.stringify(data),
 				enter_comment: false,
-				comments: JSON.stringify(data.comments)
+				comments: JSON.stringify(data.comments),
+				user_link: req.user._id,
+				username: req.user.username
 			});
 		}
 	});
@@ -123,7 +130,8 @@ router.post('/:id', function(req, res) {
 			var comment = new Comment({
 				text: req.body.comment,
 				dateCreated: new Date(),
-				user: req.user.username
+				user: req.user.username,
+				user_link: req.user_id
 			});
 
 			comment.save(function(err, comment_data) {
@@ -158,7 +166,9 @@ router.post('/:id', function(req, res) {
 								res.render('drop', {
 									data: JSON.stringify(data),
 									enter_comment: true,
-									comments: JSON.stringify(comments)
+									comments: JSON.stringify(comments),
+									user_link: req.user._id,
+									username: req.user.username
 								});
 							});
 						});
@@ -169,7 +179,9 @@ router.post('/:id', function(req, res) {
 			res.render('drop', {
 				data: JSON.stringify(data),
 				enter_comment: false,
-				comments: JSON.stringify(data.comments)
+				comments: JSON.stringify(data.comments),
+				user_link: req.user._id,
+				username: req.user.username
 			});
 		}
 	});
