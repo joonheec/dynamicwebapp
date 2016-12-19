@@ -216,6 +216,46 @@ router.get('/user/:id', function(req, res) {
 
 	});
 });
+//ONLY DELTES COMMENTS FROM PROFILE. STILL IN PROGRESS 
+router.delete('/user/:id/',function(req,res) {
+	User.findOne({'_id':req.user}, function(err,data) {
+		if(err){
+			return console.log(err);
+		}
+		Comment.find({
+			'_id': { $in: data.comments}
+		}, function(err, comments) {
+			if (err) {
+				return console.log(err);
+			}			
+			Comment.remove({
+				'_id':{$in: data.comments}
+			},function(err, comments) {
+				if (err) {
+					return console.log(err);
+				}
+				Drop.find({
+					'_id':{$in: data.drops}
+				},function(err, drops) {
+					if (err) {
+							return console.log(err);
+					}
+					Drop.remove({
+						'_id':req.user
+					},function(err, comments) {
+						if (err) {
+							return console.log(err);
+						}
+					res.render('user', {
+						comments: JSON.stringify(data.comments)
+					});
+			});
+			});
+			});	
+		});
+	});
+	res.redirect('/user/'+req.params.id);
+})
 
 function slugify(slug_list) {
 	var slug = '';

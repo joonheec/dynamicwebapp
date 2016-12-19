@@ -48,6 +48,13 @@
 		comment_bottom.append(date_container);
 		comment_container.append(comment_top);
 		comment_container.append(comment_bottom);
+		var btn = document.createElement("BUTTON");
+		btn.setAttribute("class","delete-button");
+		btn.setAttribute("src","../img/delete.png");
+		btn.setAttribute("height","30px");
+		btn.setAttribute("width","15px");
+		btn.setAttribute("onClick","deleteItem()");
+		comment_container.append(btn);
 
 		$('#comment-wrapper').append(comment_container);
 	};
@@ -91,6 +98,7 @@
 		drop_link.append(drop);
 
 		$('#drop-container').append(drop_link);
+
 	};
 
 	function formatDate(date) {
@@ -110,5 +118,22 @@
 			minutes = '0' + minutes;
 		}
 		return month + '/' + day + '/' + year + ', ' + hour + ':' + minutes + ampm;
+	}
+
+	function deleteItem(){
+   		$.ajax({
+   		    type:'delete',
+   		    url:'/user/:id',
+   		    data:{
+   		      comments: JSON.stringify(comments),
+		  	  drops: JSON.stringify(drops)
+   		    } 
+   		})
+   		.done(function(data){
+   		    console.log('deleted', data);
+   		})
+   		.fail(function(err){
+   		    console.log('was not deleted successfully', data);
+   		});
 	}
 </script>

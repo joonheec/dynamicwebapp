@@ -26,7 +26,9 @@
 .drop-title {
 	font-size: 25px;
 }
-
+#logout-container{
+	padding-left: 40px;
+}
 .image {
 	display: block;
 	width: 100%;
